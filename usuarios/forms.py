@@ -19,7 +19,7 @@ class LoginForms(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Digite a sua senha',
+                'placeholder': 'Digite sua senha',
             }
         ),
     )
@@ -54,18 +54,18 @@ class CadastroForms(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Digite a sua senha',
+                'placeholder': 'Digite uma senha válida',
             }
         ),
     )
     senha_2=forms.CharField(
-        label='Confirme a sua senha', 
+        label='Confirme a senha', 
         required=True, 
         max_length=70,
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Digite a sua senha novamente',
+                'placeholder': 'Digite a senha novamente',
             }
         ),
     )
