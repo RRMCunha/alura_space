@@ -8,7 +8,7 @@ class LoginForms(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Ex.: João Silva',
+                'placeholder': 'Ex.: joaosilva',
             }
         )
     )
@@ -32,7 +32,7 @@ class CadastroForms(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Ex.: João Silva',
+                'placeholder': 'Ex.: joaosilva',
             }
         )
     )
@@ -76,7 +76,7 @@ class CadastroForms(forms.Form):
         if nome:
             nome = nome.strip()
             if ' ' in nome:
-                raise forms.ValidationError('Espaços não são permitidos nesse campo')
+                raise forms.ValidationError('ATENÇÃO: Não são permitidos espaços neste campo!!!')
             else:
                 return nome
 
@@ -86,6 +86,6 @@ class CadastroForms(forms.Form):
 
         if senha_1 and senha_2:
             if senha_1 != senha_2:
-                raise forms.ValidationError('Senhas não são iguais')
+                raise forms.ValidationError('Senhas não são iguais!!!')
             else:
                 return senha_2
