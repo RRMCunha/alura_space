@@ -21,7 +21,7 @@ def login(request):
         )
         if usuario is not None:
             auth.login(request, usuario)
-            messages.success(request, f'{nome} logado com sucesso!')
+            messages.success(request, f'{nome} logado com sucesso.')
             return redirect('index')
         else:
             messages.error(request, 'Erro ao efetuar login!!!')
@@ -41,7 +41,7 @@ def cadastro(request):
             senha=form['senha_1'].value()
 
             if User.objects.filter(username=nome).exists():
-                messages.error(request, 'Usuário já existente!!!')
+                messages.error(request, f'{nome} - Usuário já existente!!!')
                 return redirect('cadastro')
 
             usuario = User.objects.create_user(
@@ -50,7 +50,7 @@ def cadastro(request):
                 password=senha
             )
             usuario.save()
-            messages.success(request, 'Cadastro efetuado com sucesso!')
+            messages.success(request, f'{nome} - Cadastro efetuado com sucesso!')
             return redirect('login')
 
     return render(request, 'usuarios/cadastro.html', {'form': form})
