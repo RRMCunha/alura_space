@@ -11,17 +11,13 @@ def login(request):
         form = LoginForms(request.POST)
 
         if form.is_valid():
-            nome = form['nome_login'].value()
-            senha = form['senha'].value()
+            nome_usuario=form['nome_usuario'].value()
+            senha=form['senha'].value()
 
-        usuario = auth.authenticate(
-            request,
-            username=nome,
-            password=senha
-        )
+        usuario = auth.authenticate(request, username=nome_usuario, password=senha)
         if usuario is not None:
             auth.login(request, usuario)
-            messages.success(request, f'{nome} logado com sucesso.')
+            messages.success(request, f'{nome_usuario} logado com sucesso.')
             return redirect('index')
         else:
             messages.error(request, 'Erro ao efetuar login!!!')
@@ -36,21 +32,25 @@ def cadastro(request):
         form = CadastroForms(request.POST)
 
         if form.is_valid():
-            nome=form['nome_cadastro'].value()
+            nome_usuario=form['nome_usuario'].value()
+            nome_primeiro_cadastro=form['nome_primeiro_cadastro'].value()
+            nome_ultimo_cadastro=form['nome_ultimo_cadastro'].value()
             email=form['email'].value()
             senha=form['senha_1'].value()
 
-            if User.objects.filter(username=nome).exists():
-                messages.error(request, f'{nome} - Usuário já existente!!!')
+            if User.objects.filter(username=nome_usuario).exists():
+                messages.error(request, f'{nome_usuario} - Usuário já existente!!!')
                 return redirect('cadastro')
 
             usuario = User.objects.create_user(
-                username=nome,
+                username=nome_usuario,
+                first_name=nome_primeiro_cadastro,
+                last_name=nome_ultimo_cadastro,
                 email=email,
                 password=senha
             )
             usuario.save()
-            messages.success(request, f'{nome} - Cadastro efetuado com sucesso!')
+            messages.success(request, f'{nome_usuario} - Cadastro efetuado com sucesso!')
             return redirect('login')
 
     return render(request, 'usuarios/cadastro.html', {'form': form})

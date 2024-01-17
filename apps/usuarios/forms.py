@@ -1,7 +1,7 @@
 from django import forms
 
 class LoginForms(forms.Form):
-    nome_login=forms.CharField(
+    nome_usuario=forms.CharField(
         label='Nome de Usuário', 
         required=True, 
         max_length=100,
@@ -25,7 +25,7 @@ class LoginForms(forms.Form):
     )
 
 class CadastroForms(forms.Form):
-    nome_cadastro=forms.CharField(
+    nome_usuario=forms.CharField(
         label='Nome de Usuário', 
         required=True, 
         max_length=100,
@@ -36,6 +36,31 @@ class CadastroForms(forms.Form):
             }
         )
     )
+
+    nome_primeiro_cadastro=forms.CharField(
+        label='Primeiro Nome', 
+        required=False, 
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Ex.: João',
+            }
+        )
+    )
+
+    nome_ultimo_cadastro=forms.CharField(
+        label='Último Nome', 
+        required=False, 
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Ex.: da Silva',
+            }
+        )
+    )
+
     email=forms.EmailField(
         label='Email',
         required=True,
@@ -47,6 +72,7 @@ class CadastroForms(forms.Form):
             }
         )
     )
+
     senha_1=forms.CharField(
         label='Senha', 
         required=True, 
@@ -58,6 +84,7 @@ class CadastroForms(forms.Form):
             }
         ),
     )
+
     senha_2=forms.CharField(
         label='Confirme a senha', 
         required=True, 
