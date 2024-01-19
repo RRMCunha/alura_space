@@ -94,7 +94,7 @@ table {
 
 .busca__fundo {
     align-items: center;
-    background-color: #041A37;
+    background-color: #d1d4f1e3;
     border-radius: 8px;
     display: flex;
     margin: 0 auto;
@@ -107,14 +107,14 @@ table {
     border: none;
     font-size: 1rem;
     height: 24px;
-    padding: 10px;
+    padding: 8px;
     width: 500px;
 }
 
 .busca__icone {
     cursor: pointer;
     width: 2rem;
-    height: 2rem;
+    height: fit-content;
 }
 
 .cards {
@@ -423,7 +423,7 @@ table {
 
 .row {
     --bs-gutter-x: 1.5rem;
-    --bs-gutter-y: 0;
+    --bs-gutter-y: 5;
     display: flex;
     flex-wrap: wrap;
     margin-top: calc(-1 * var(--bs-gutter-y));
