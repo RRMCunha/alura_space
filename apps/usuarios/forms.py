@@ -2,7 +2,7 @@ from django import forms
 
 class LoginForms(forms.Form):
     nome_usuario=forms.CharField(
-        label='Nome de Usuário', 
+        label='Usuário', 
         required=True, 
         max_length=100,
         widget=forms.TextInput(
@@ -26,7 +26,7 @@ class LoginForms(forms.Form):
 
 class CadastroForms(forms.Form):
     nome_usuario=forms.CharField(
-        label='Nome de Usuário', 
+        label='Usuário', 
         required=True, 
         max_length=100,
         widget=forms.TextInput(
@@ -97,8 +97,8 @@ class CadastroForms(forms.Form):
         ),
     )
 
-    def clean_nome_cadastro(self):
-        nome = self.cleaned_data.get('nome_cadastro')
+    def clean_nome_usuario(self):
+        nome = self.cleaned_data.get('nome_usuario')
 
         if nome:
             nome = nome.strip()

@@ -21,20 +21,20 @@
                         <h2 class="cards__titulo">Navegue pela galeria</h2>
                         <ul class="cards__lista">
                             {% if cards %}
-                            {% for fotografia in cards %}
+                            {% for foto in cards %}
                             <li class="card">
-                                <a href="{% url 'imagem' fotografia.id %}">
-                                {% if fotografia.foto == "" or fotografia.foto == null %}
+                                <a href="{% url 'imagem' foto.id %}">
+                                {% if foto.foto == "" or foto.foto == null %}
                                     <img class="card__imagem" src="{% static '/assets/imagens/galeria/not-found.png'%}" alt="foto">
                                 {% else %}
-                                    <img class="card__imagem" src="{{ fotografia.foto.url }}" alt="foto">
+                                    <img class="card__imagem" src="{{ foto.foto.url }}" alt="foto">
                                 {% endif %}
                                 </a>
-                                <span class="card__tag">{{ fotografia.categoria }}</span>
+                                <span class="card__tag">{{ foto.categoria }}</span>
                                 <div class="card__info">
-                                    <p class="card__titulo">{{ fotografia.nome }}</p>
+                                    <p class="card__titulo">{{ foto.titulo }}</p>
                                     <div class="card__texto">
-                                        <p class="card__descricao">{{ fotografia.legenda }}</p>
+                                        <p class="card__descricao">{{ foto.legenda }}</p>
                                         <span>
                                             <img src="{% static '/assets/icones/1x/favorite_outline.png' %}" alt="ícone de coração">
                                         </span>
@@ -44,7 +44,7 @@
                             {% endfor %}
                             {% else %}
                             <div class="imagem__texto">
-                                <p>Fotografias não encontradas!!!</p>
+                                <p>Fotos não encontradas!!!</p>
                             </div>
                             {% endif %}
                         </ul>
