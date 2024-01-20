@@ -20,10 +20,10 @@ def buscar(request):
         return redirect('login')
     fotos = Foto.objects.order_by("data_foto").filter(publicada=True)
     if "buscar" in request.GET:
-        nome_a_buscar = request.GET['buscar']
-        if nome_a_buscar:
-            fotos = fotos.filter(titulo__contains=nome_a_buscar)
-    return render(request, "galeria/buscar.html", {"cards": fotos})
+        titulo_a_buscar = request.GET['buscar']
+        if titulo_a_buscar:
+            fotos = fotos.filter(titulo__contains=titulo_a_buscar)
+    return render(request, "galeria/index.html", {"cards": fotos})
 
 def nova_foto(request):
     if not request.user.is_authenticated:
@@ -54,3 +54,7 @@ def deletar_foto(request, foto_id):
     foto.delete()
     messages.success(request, 'Foto deletada com sucesso!')
     return redirect('index')
+
+def filtro(request, categoria):
+    fotos = Foto.objects.order_by("data_foto").filter(publicada=True, categoria=categoria)
+    return render(request, 'galeria/index.html', {'cards': fotos})

@@ -8,8 +8,7 @@ class Foto(models.Model):
         ("ESTRELA","Estrela"),
         ("GALÁXIA","Galáxia"),
         ("NEBULOSA","Nebulosa"),
-        ("PLANETA","Planeta"),
-    ]
+        ("PLANETA","Planeta"),]
 
     titulo = models.CharField(max_length=100, null=False, blank=False)
     legenda = models.CharField(max_length=150, null=False, blank=False)
@@ -23,8 +22,7 @@ class Foto(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='user'
-    )
+        related_name='user')
 
     def __str__(self):
         return self.titulo

@@ -375,7 +375,7 @@ table {
     padding: .8rem .5rem;
     width: 100px;
     text-align: center;
-    border: 2px solid transparent;
+    border: 4px solid darkslateblue;
 }
 
 .tags__tag:hover {
